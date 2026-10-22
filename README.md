@@ -11,7 +11,9 @@ Architecture portfolio project demonstrating enterprise retrieval-augmented gene
 
 ## Branching strategy
 
-`master` (release) ← `develop` (integration) ← `feature/week-04-azure-production-readiness` ← `feature/week-03-evaluation-governance` ← `feature/week-02-agentic-incident-intelligence` ← `feature/week-01-rag-foundation`.
+`master` (release) ← `develop` (integration) ← `feature/azure-deployment-observability` ← `feature/model-evaluation-governance` ← `feature/ai-inference-incident-orchestration` ← `feature/enterprise-data-rag-architecture`.
+
+**Branch names represent architecture capabilities and enterprise delivery experience, not calendar periods.**
 
 **Progressive branching rule:** Create each new weekly branch from the completed preceding week's HEAD, rather than pre-creating all branches at the same commit. Week 4 then contains the cumulative deliverables. Merge Week 4 into `develop`, test, then merge `develop` into `master`. Do not merge unfinished work.
 
