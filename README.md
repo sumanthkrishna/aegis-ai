@@ -42,11 +42,27 @@ curl -X POST http://localhost:8000/v1/incidents/investigate \
   -d '{"asset_id":"UPS-101","question":"Investigate rising battery temperature"}'
 ```
 
+## Model evaluation and governance
+
+This capability adds reproducible retrieval metrics (Recall@k, Hit Rate@k,
+MRR), incident structural safety checks, metadata-only audit event builders,
+secret redaction helpers, and untrusted-text flags. Execute:
+
+```bash
+python -m scripts.evaluate
+pytest -q
+```
+
+This is a labeled **synthetic** evaluation, not a benchmark of deployed models.
+Model-to-model inference benchmarking is documented as a protocol and remains to
+be implemented with provisioned models. See
+[Model evaluation and governance](docs/model-evaluation-governance.md).
+
 ## Progressive branches
 
 1. `feature/enterprise-data-rag-architecture` — ingestion, retrieval, cited evidence (**current**)
 2. `feature/ai-inference-incident-orchestration` — synthetic incident analysis, controlled tools and optional AI summaries (**current**)
-3. `feature/model-evaluation-governance` — tests, evaluation, governance and model comparison
+3. `feature/model-evaluation-governance` — retrieval evaluation, governance and model comparison protocol (**current**)
 4. `feature/azure-deployment-observability` — Azure IaC, CI/CD, monitoring and cost assessment
 
 Create each new capability branch from the completed preceding phase so the last phase carries the full implementation. Merge final capability branch into `develop` after checks, then promote `develop` to `master`.
