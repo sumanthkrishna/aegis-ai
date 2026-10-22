@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "r1",
+    "question": "UPS battery temperature alert airflow checklist",
+    "relevant_document_ids": [
+      "OPS-001"
+    ],
+    "k": 3
+  },
+  {
+    "case_id": "r2",
+    "question": "cooling filter fan inspection",
+    "relevant_document_ids": [
+      "OPS-002"
+    ],
+    "k": 3
+  },
+  {
+    "case_id": "r3",
+    "question": "previous incident blocked intake airflow",
+    "relevant_document_ids": [
+      "INC-0031"
+    ],
+    "k": 3
+  }
+]
