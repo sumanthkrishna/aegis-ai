@@ -1,0 +1,30 @@
+[
+  {
+    "document_id": "OPS-001",
+    "title": "Synthetic UPS thermal alert runbook",
+    "text": "For simulated UPS battery temperature alerts, review inlet ambient temperature, ventilation obstructions, battery sensor calibration, and load trend. Do not perform switching operations based on an AI recommendation. Escalate to authorized field engineering.",
+    "classification": "public",
+    "source": "synthetic/runbook/ups-thermal"
+  },
+  {
+    "document_id": "OPS-002",
+    "title": "Synthetic cooling inspection checklist",
+    "text": "When cooling efficiency deteriorates, compare supply and return temperatures, filter differential pressure, fan status, airflow restrictions and recent maintenance. A qualified technician must verify any corrective action.",
+    "classification": "public",
+    "source": "synthetic/runbook/cooling"
+  },
+  {
+    "document_id": "INC-0031",
+    "title": "Synthetic past incident battery temperature",
+    "text": "A simulated site experienced rising battery temperature after the intake airflow was blocked by packaging material. Technicians confirmed obstruction and restored airflow under an approved work order.",
+    "classification": "public",
+    "source": "synthetic/incidents/0031"
+  },
+  {
+    "document_id": "OPS-PRIVATE",
+    "title": "Restricted internal operations",
+    "text": "Restricted nonpublic incident reference. Should never be returned to demo reader role.",
+    "classification": "restricted",
+    "source": "synthetic/restricted"
+  }
+]

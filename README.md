@@ -1,20 +1,39 @@
 # AegisAI — Enterprise Operations & Reliability Intelligence
 
-Architecture portfolio project demonstrating enterprise retrieval-augmented generation, incident intelligence, evaluation, responsible AI, and Azure operations using synthetic and properly licensed public data.
+Architecture portfolio: retrieval-augmented operations knowledge, agentic incident intelligence, model evaluation, responsible AI and Azure observability. Uses synthetic and properly licensed public data only.
 
-## Delivery roadmap
+## Current phase: Enterprise Data & RAG Architecture
 
-1. **Week 1 — RAG foundation:** document ingestion, hybrid retrieval, cited answers, FastAPI and UI.
-2. **Week 2 — Incident intelligence:** synthetic telemetry, investigation tools, controlled agent workflow.
-3. **Week 3 — Evaluation and governance:** model comparison, regression dataset, guardrails, audit logs.
-4. **Week 4 — Azure deployment:** infrastructure as code, CI/CD, observability, cost and architecture documentation.
+Implemented:
+- Python/FastAPI health, search and evidence-answer endpoints
+- Validated JSON document ingestion, source identifiers and classification metadata
+- Lexical retrieval; **optional** SentenceTransformer dense embeddings with weighted hybrid ranking
+- Source-linked evidence excerpts, explicit insufficient-evidence fallback, demo role-based filtering
+- Synthetic UPS/cooling procedures and incident history, pytest tests and GitHub Actions CI
 
-## Branching strategy
+**Important:** The current response is retrieval-only; it does not yet use a generative model. The role header is a demonstration boundary, not enterprise authentication. See [architecture and run instructions](docs/architecture.md).
 
-`master` (release) ← `develop` (integration) ← `feature/week-04-azure-production-readiness` ← `feature/week-03-evaluation-governance` ← `feature/week-02-agentic-incident-intelligence` ← `feature/week-01-rag-foundation`.
+## Run
 
-**Progressive branching rule:** Create each new weekly branch from the completed preceding week's HEAD, rather than pre-creating all branches at the same commit. Week 4 then contains the cumulative deliverables. Merge Week 4 into `develop`, test, then merge `develop` into `master`. Do not merge unfinished work.
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e '.[dev]'
+uvicorn aegis.main:app --reload
+pytest -q
+```
 
-GitHub initializes new repositories with `main` as the default branch; this project uses `master` as its requested release branch. Set `master` as the default in repository settings if desired.
+Try the API at `http://localhost:8000/docs`. Set `AEGIS_EMBEDDINGS=sentence-transformers` to enable real embeddings (first run downloads a public model).
 
-No proprietary JPMC or Vertiv data, credentials or internal documentation may be committed.
+## Progressive branches
+
+1. `feature/enterprise-data-rag-architecture` — ingestion, retrieval, cited evidence (**current**)
+2. `feature/ai-inference-incident-orchestration` — synthetic incident analysis, controlled tools and AI model integration
+3. `feature/model-evaluation-governance` — tests, evaluation, governance and model comparison
+4. `feature/azure-deployment-observability` — Azure IaC, CI/CD, monitoring and cost assessment
+
+Create each new capability branch from the completed preceding phase so the last phase carries the full implementation. Merge final capability branch into `develop` after checks, then promote `develop` to `master`.
+
+## Confidentiality and safety
+
+Never commit JPMC/Vertiv internal data or secrets. Synthetic outputs are educational only and must not be used to control real equipment. Document-based instructions are untrusted input; later phases will add threat-model tests and authenticated authorization.
