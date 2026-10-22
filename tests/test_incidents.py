@@ -2,7 +2,6 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from aegis.incident_api import create_incident_router, load_synthetic_operations
 from aegis.incidents import TelemetrySample, analyze_temperature
 from aegis.main import create_app
 from aegis.retrieval import Document, HybridIndex
@@ -25,10 +24,7 @@ def test_temperature_requires_minimum_history():
 def make_client():
     index = HybridIndex([Document("d1", "UPS thermal guidance",
                                   "battery temperature airflow thermal incident")])
-    telemetry, incidents = load_synthetic_operations(Path("data/operations.json"))
-    api = create_app(index)
-    api.include_router(create_incident_router(index, telemetry, incidents))
-    return TestClient(api)
+    return TestClient(create_app(index))
 
 
 def test_investigation_requires_reader():
