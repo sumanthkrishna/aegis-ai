@@ -22,6 +22,11 @@ def load_documents(path: str | Path) -> list[Document]:
     return [Document(**x) for x in records]
 
 
+class SearchRequest(BaseModel):
+    query: str = Field(min_length=1, max_length=2000)
+    k: int = Field(default=5, ge=1, le=20)
+
+
 def create_app(index: HybridIndex | None = None) -> FastAPI:
     app = FastAPI(title="AegisAI Knowledge API", version="0.1.0")
     if index is None:
@@ -32,10 +37,6 @@ def create_app(index: HybridIndex | None = None) -> FastAPI:
         embedder = SentenceTransformerEmbeddings() if mode == "sentence-transformers" else None
         index = HybridIndex(load_documents(path), embedder)
     app.state.index = index
-
-    class SearchRequest(BaseModel):
-        query: str = Field(min_length=1, max_length=2000)
-        k: int = Field(default=5, ge=1, le=20)
 
     @app.get("/health")
     def health() -> dict:
