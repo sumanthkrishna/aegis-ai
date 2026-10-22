@@ -9,6 +9,7 @@ from fastapi import FastAPI, Header, HTTPException
 from pydantic import BaseModel, Field
 
 from aegis.retrieval import Document, HybridIndex, SentenceTransformerEmbeddings, evidence_answer
+from aegis.incident_api import create_incident_router, load_synthetic_operations
 
 
 def load_documents(path: str | Path) -> list[Document]:
@@ -57,6 +58,10 @@ def create_app(index: HybridIndex | None = None) -> FastAPI:
         hits = app.state.index.search(request.query, k=request.k, allowed={"public"})
         return evidence_answer(request.query, hits)
 
+    operations_path = Path(os.getenv("AEGIS_OPERATIONS_PATH", str(Path(__file__).parents[1] / "data" / "operations.json")))
+    if operations_path.exists():
+        telemetry, incidents = load_synthetic_operations(operations_path)
+        app.include_router(create_incident_router(index, telemetry, incidents))
     return app
 
 

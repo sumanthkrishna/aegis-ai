@@ -25,10 +25,27 @@ pytest -q
 
 Try the API at `http://localhost:8000/docs`. Set `AEGIS_EMBEDDINGS=sentence-transformers` to enable real embeddings (first run downloads a public model).
 
+## Incident intelligence (current capability branch)
+
+The `POST /v1/incidents/investigate` endpoint combines synthetic telemetry,
+historical incidents and authorized knowledge retrieval. Calculations and routing
+are deterministic, read-only and require human review. Optional LLM narrative
+generation is opt-in, disabled by default. See
+[incident orchestration architecture](docs/incident-orchestration.md).
+
+Example:
+
+```bash
+curl -X POST http://localhost:8000/v1/incidents/investigate \
+  -H 'Content-Type: application/json' \
+  -H 'x-aegis-role: reader' \
+  -d '{"asset_id":"UPS-101","question":"Investigate rising battery temperature"}'
+```
+
 ## Progressive branches
 
 1. `feature/enterprise-data-rag-architecture` — ingestion, retrieval, cited evidence (**current**)
-2. `feature/ai-inference-incident-orchestration` — synthetic incident analysis, controlled tools and AI model integration
+2. `feature/ai-inference-incident-orchestration` — synthetic incident analysis, controlled tools and optional AI summaries (**current**)
 3. `feature/model-evaluation-governance` — tests, evaluation, governance and model comparison
 4. `feature/azure-deployment-observability` — Azure IaC, CI/CD, monitoring and cost assessment
 
