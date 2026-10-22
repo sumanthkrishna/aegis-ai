@@ -1,0 +1,88 @@
+{
+  "telemetry": [
+    {
+      "asset_id": "UPS-101",
+      "timestamp": "2026-10-01T09:00:00Z",
+      "battery_temp_c": 25,
+      "ambient_temp_c": 22,
+      "load_pct": 52
+    },
+    {
+      "asset_id": "UPS-101",
+      "timestamp": "2026-10-01T10:00:00Z",
+      "battery_temp_c": 25.4,
+      "ambient_temp_c": 22,
+      "load_pct": 53
+    },
+    {
+      "asset_id": "UPS-101",
+      "timestamp": "2026-10-01T11:00:00Z",
+      "battery_temp_c": 26,
+      "ambient_temp_c": 22.5,
+      "load_pct": 59
+    },
+    {
+      "asset_id": "UPS-101",
+      "timestamp": "2026-10-01T12:00:00Z",
+      "battery_temp_c": 31,
+      "ambient_temp_c": 23,
+      "load_pct": 65
+    },
+    {
+      "asset_id": "UPS-101",
+      "timestamp": "2026-10-01T13:00:00Z",
+      "battery_temp_c": 33,
+      "ambient_temp_c": 23.5,
+      "load_pct": 66
+    },
+    {
+      "asset_id": "UPS-101",
+      "timestamp": "2026-10-01T14:00:00Z",
+      "battery_temp_c": 35,
+      "ambient_temp_c": 24,
+      "load_pct": 69
+    },
+    {
+      "asset_id": "UPS-102",
+      "timestamp": "2026-10-01T09:00:00Z",
+      "battery_temp_c": 24,
+      "ambient_temp_c": 22,
+      "load_pct": 51
+    },
+    {
+      "asset_id": "UPS-102",
+      "timestamp": "2026-10-01T10:00:00Z",
+      "battery_temp_c": 24.2,
+      "ambient_temp_c": 22,
+      "load_pct": 51
+    },
+    {
+      "asset_id": "UPS-102",
+      "timestamp": "2026-10-01T11:00:00Z",
+      "battery_temp_c": 24.1,
+      "ambient_temp_c": 22.1,
+      "load_pct": 52
+    },
+    {
+      "asset_id": "UPS-102",
+      "timestamp": "2026-10-01T12:00:00Z",
+      "battery_temp_c": 24.3,
+      "ambient_temp_c": 22.1,
+      "load_pct": 52
+    }
+  ],
+  "incidents": [
+    {
+      "incident_id": "INC-0031",
+      "asset_id": "UPS-101",
+      "summary": "Simulated airflow restriction investigated by technician and resolved under work order.",
+      "category": "thermal"
+    },
+    {
+      "incident_id": "INC-0042",
+      "asset_id": "UPS-102",
+      "summary": "Simulated temperature sensor validation, no component failure established.",
+      "category": "sensor"
+    }
+  ]
+}
